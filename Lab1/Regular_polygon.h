@@ -1,12 +1,16 @@
 
 #ifndef LAB1_REGULAR_POLYGON_H
 #define LAB1_REGULAR_POLYGON_H
+
 #include "Polygon.h"
 #include "Vector.h"
+
 class Regular_polygon : public Polygon
 {
 public:
-    Regular_polygon(){}
+    Regular_polygon()
+    {}
+
     Regular_polygon(std::vector<Point> points)
     {
         points_.resize(points.size());
@@ -22,7 +26,7 @@ public:
             }
             else
             {
-                if(value != v.len())
+                if (value != v.len())
                 {
                     check = false;
                     break;
@@ -38,16 +42,20 @@ public:
             }
         }
     }
+
     Regular_polygon(const Regular_polygon &other)
     {
         points_.resize(other.points_.size());
-        for(int i = 0; i < other.points_.size(); i++)
+        for (int i = 0; i < other.points_.size(); i++)
         {
             points_[i].x_change(other.points_[i].x());
             points_[i].y_change(other.points_[i].y());
         }
     }
-    ~Regular_polygon(){}
+
+    ~Regular_polygon()
+    {}
 
 };
+
 #endif

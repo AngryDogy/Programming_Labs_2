@@ -9,6 +9,7 @@
 #include "Vector.h"
 #include "Regular_polygon.h"
 #include "Polynom.h"
+
 int main()
 {
     Point A(1, 1), B(3, 1), C(3, 3), D(1, 3);
@@ -18,13 +19,15 @@ int main()
     points[1] = B;
     points[2] = C;
     Broken_line bline(points);
-    std::cout << "Number of broken line's points:" << bline.number_points() << ' ' << "First point: " << bline.point_x(0) << ' ' << bline.point_y(0) << '\n';
+    std::cout << "Number of broken line's points:" << bline.number_points() << ' ' << "First point: "
+              << bline.point_x(0) << ' ' << bline.point_y(0) << '\n';
     points.resize(4);
     points[3] = D;
     Closed_line cline(points);
     std::cout << "For closed line: " << cline.number_points() << '\n';
     Polygon polygon(points);
-    std::cout << "Area and perimeter: " << polygon.area() << ' ' << polygon.perimeter() << ' ' << "For " << polygon.number_points() << '\n';
+    std::cout << "Area and perimeter: " << polygon.area() << ' ' << polygon.perimeter() << ' ' << "For "
+              << polygon.number_points() << '\n';
     Regular_polygon rpolygon(points);
     std::cout << "Regular_polygon points:" << '\n';
     for (int i = 0; i < rpolygon.number_points(); i++)
@@ -39,7 +42,7 @@ int main()
     std::cout << "Trapeze: " << trapeze.area() << ' ' << trapeze.perimeter() << '\n';
     points.resize(3);
     Triangle triangle(points);
-    std::cout<<"Area and perimeter of Triangle: " << triangle.area() << ' ' << triangle.perimeter() << '\n';
+    std::cout << "Area and perimeter of Triangle: " << triangle.area() << ' ' << triangle.perimeter() << '\n';
     std::vector<double> values;
     values.resize(3);
     values[0] = 1.0;
@@ -48,7 +51,7 @@ int main()
     Polynom p1(values), p2;
     std::cin >> p2;
     Polynom p = p1 + p2;
-    p*= 5;
-    std::cout<<p;
+    p *= 5;
+    std::cout << p;
     return 0;
 }

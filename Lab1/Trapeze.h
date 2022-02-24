@@ -1,16 +1,21 @@
 
 #ifndef LAB1_TRAPEZE_H
 #define LAB1_TRAPEZE_H
+
 #include "Polygon.h"
 #include "Vector.h"
+
 double eps = 1e-12;
+
 class Trapeze : public Polygon
 {
 public:
-    Trapeze(){}
+    Trapeze()
+    {}
+
     Trapeze(std::vector<Point> points)
     {
-        if(points.size() == 4)
+        if (points.size() == 4)
         {
             Vector v[4];
             v[0] = Vector(points[0], points[1]);
@@ -22,7 +27,7 @@ public:
             {
                 for (int j = i + 1; j < 4; j++)
                 {
-                    if (1 - v[i].getCos(v[j])  < eps)
+                    if (1 - v[i].getCos(v[j]) < eps)
                     {
                         k++;
 
@@ -42,4 +47,5 @@ public:
     }
 
 };
+
 #endif

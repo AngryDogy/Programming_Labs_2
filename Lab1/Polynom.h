@@ -1,10 +1,13 @@
 
 #ifndef LAB1_POLYNOM_H
 #define LAB1_POLYNOM_H
+
 class Polynom
 {
 public:
-    Polynom(){}
+    Polynom()
+    {}
+
     Polynom(std::vector<double> coefficients)
     {
         coefficients_.resize(coefficients.size());
@@ -13,6 +16,7 @@ public:
             coefficients_[i] = coefficients[i];
         }
     }
+
     Polynom(const Polynom &other)
     {
         coefficients_.resize(other.coefficients_.size());
@@ -21,8 +25,11 @@ public:
             coefficients_[i] = other.coefficients_[i];
         }
     }
-    ~Polynom(){}
-    Polynom& operator=(const Polynom& other)
+
+    ~Polynom()
+    {}
+
+    Polynom &operator=(const Polynom &other)
     {
         if (&other == this)
             return *this;
@@ -32,7 +39,8 @@ public:
             coefficients_[i] = other.coefficients_[i];
         }
     }
-    bool operator==(const Polynom& other)
+
+    bool operator==(const Polynom &other)
     {
         if (coefficients_.size() != other.coefficients_.size())
         {
@@ -50,13 +58,15 @@ public:
             return true;
         }
     }
-    bool operator !=(const Polynom& other)
+
+    bool operator!=(const Polynom &other)
     {
         if (*this == other)
             return false;
         return true;
     }
-    Polynom operator+(const Polynom& other)
+
+    Polynom operator+(const Polynom &other)
     {
         int n = std::max(coefficients_.size(), other.coefficients_.size());
         std::vector<double> values;
@@ -84,7 +94,8 @@ public:
         }
         return Polynom(values);
     }
-    Polynom operator-(const Polynom& other)
+
+    Polynom operator-(const Polynom &other)
     {
         int n = std::min(coefficients_.size(), other.coefficients_.size());
         std::vector<double> values;
@@ -112,7 +123,8 @@ public:
         }
         return Polynom(values);
     }
-    Polynom& operator+=(const Polynom& other)
+
+    Polynom &operator+=(const Polynom &other)
     {
         int n = std::min(coefficients_.size(), other.coefficients_.size());
         for (int i = 0; i < n; i++)
@@ -121,7 +133,8 @@ public:
         }
         return *this;
     }
-    Polynom& operator-=(const Polynom& other)
+
+    Polynom &operator-=(const Polynom &other)
     {
         int n = std::min(coefficients_.size(), other.coefficients_.size());
         for (int i = 0; i < n; i++)
@@ -130,65 +143,78 @@ public:
         }
         return *this;
     }
+
     Polynom operator*(double rhs)
     {
         std::vector<double> values;
         values.resize(coefficients_.size());
-        for(int i = 0; i < coefficients_.size(); i++)
+        for (int i = 0; i < coefficients_.size(); i++)
         {
             values[i] = coefficients_[i] * rhs;
         }
         return Polynom(values);
     }
+
     Polynom operator/(double rhs)
     {
         std::vector<double> values;
         values.resize(coefficients_.size());
-        for(int i = 0; i < coefficients_.size(); i++)
+        for (int i = 0; i < coefficients_.size(); i++)
         {
             values[i] = coefficients_[i] / rhs;
         }
         return Polynom(values);
     }
-    Polynom& operator*=(double rhs)
+
+    Polynom &operator*=(double rhs)
     {
-        for(int i = 0; i < coefficients_.size(); i++)
+        for (int i = 0; i < coefficients_.size(); i++)
         {
             coefficients_[i] = coefficients_[i] * rhs;
         }
         return *this;
     }
-    Polynom& operator/=(double rhs)
+
+    Polynom &operator/=(double rhs)
     {
-        for(int i = 0; i < coefficients_.size(); i++)
+        for (int i = 0; i < coefficients_.size(); i++)
         {
             coefficients_[i] = coefficients_[i] / rhs;
         }
         return *this;
     }
+
     double operator[](int index)
     {
         return coefficients_[index];
     }
-    friend std::istream& operator>>(std::istream& stream, Polynom& polynom);
-    friend std::ostream& operator<< (std::ostream &out, const Polynom &polynom);
-    friend Polynom operator+(Polynom& a, Polynom& b);
-    friend Polynom operator-(Polynom& a, Polynom& b);
-    friend Polynom operator*(double lhs, Polynom& rhs);
+
+    friend std::istream &operator>>(std::istream &stream, Polynom &polynom);
+
+    friend std::ostream &operator<<(std::ostream &out, const Polynom &polynom);
+
+    friend Polynom operator+(Polynom &a, Polynom &b);
+
+    friend Polynom operator-(Polynom &a, Polynom &b);
+
+    friend Polynom operator*(double lhs, Polynom &rhs);
+
 private:
     std::vector<double> coefficients_;
 };
-Polynom operator*(double lhs, Polynom& rhs)
+
+Polynom operator*(double lhs, Polynom &rhs)
 {
     std::vector<double> values;
     values.resize(rhs.coefficients_.size());
-    for(int i = 0; i < rhs.coefficients_.size(); i++)
+    for (int i = 0; i < rhs.coefficients_.size(); i++)
     {
         values[i] = lhs * rhs.coefficients_[i];
     }
     return Polynom(values);
 }
-Polynom operator+(Polynom& a, Polynom& b)
+
+Polynom operator+(Polynom &a, Polynom &b)
 {
     int n = std::max(a.coefficients_.size(), b.coefficients_.size());
     std::vector<double> values;
@@ -216,7 +242,8 @@ Polynom operator+(Polynom& a, Polynom& b)
     }
     return Polynom(values);
 }
-Polynom operator-(Polynom& a, Polynom& b)
+
+Polynom operator-(Polynom &a, Polynom &b)
 {
     int n = std::max(a.coefficients_.size(), b.coefficients_.size());
     std::vector<double> values;
@@ -244,13 +271,14 @@ Polynom operator-(Polynom& a, Polynom& b)
     }
     return Polynom(values);
 }
-std::istream& operator>>(std::istream& stream, Polynom& polynom)
+
+std::istream &operator>>(std::istream &stream, Polynom &polynom)
 {
     int i = 0;
     double val;
     char s = 0;
     std::vector<double> values;
-    while(s != '\n')
+    while (s != '\n')
     {
         if (s == '+' || s == '-' || s == 0)
         {
@@ -269,7 +297,8 @@ std::istream& operator>>(std::istream& stream, Polynom& polynom)
 
 
 }
-std::ostream& operator<< (std::ostream &out, const Polynom &polynom)
+
+std::ostream &operator<<(std::ostream &out, const Polynom &polynom)
 {
 
     double val_out;
@@ -278,7 +307,7 @@ std::ostream& operator<< (std::ostream &out, const Polynom &polynom)
         val_out = polynom.coefficients_[i];
         if (i != 0)
         {
-            if(val_out < 0)
+            if (val_out < 0)
             {
                 out << '-' << ' ';
                 val_out = -val_out;
@@ -292,4 +321,5 @@ std::ostream& operator<< (std::ostream &out, const Polynom &polynom)
     }
     return out;
 }
+
 #endif
