@@ -1,0 +1,1 @@
+  -LC:/Users/vladh/CLionC++/lab2/curl-7.82.0/lib  -lcurl -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
