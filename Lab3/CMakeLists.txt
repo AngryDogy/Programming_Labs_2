@@ -3,4 +3,4 @@ project(lab3)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(lab3 main.cpp circular_buffer.h algorithms.h)
+add_executable(lab3 main.cpp circular_buffer.h algorithms.h point.h)

@@ -3,13 +3,48 @@
 #include<algorithm>
 #include "circular_buffer.h"
 #include "algorithms.h"
+#include "point.h"
+
 template<typename T>
 bool function(T a)
 {
     return a == 50;
 }
+
 void pow(int &i)
 { i *= i; }
+
+template<typename T>
+bool sorted(T a, T b)
+{
+    if (a > b)
+        return true;
+    return false;
+}
+
+template<typename T>
+bool zero(T a)
+{
+    if (a == 0)
+        return true;
+    return false;
+}
+
+template<typename T>
+bool greater(T a)
+{
+    if (a < 20)
+        return true;
+    return false;
+}
+
+template<typename T>
+bool func(T a, T b)
+{
+    if (a == b)
+        return true;
+    return false;
+}
 
 int main()
 {
@@ -55,7 +90,33 @@ int main()
     circular_buffer<int>::iterator it2 = new_buffer.begin();
     std::cout << it2[2] << std::endl;
     std::cout << "Using my algorithms with different types" << std::endl;
-    circular_buffer<int>::iterator it3 = find_backward(new_buffer.begin(), new_buffer.end(), 400);
-    std::cout << *it3;
+    circular_buffer<int>::iterator it3 = Find_backward(new_buffer.begin(), new_buffer.end(), 400);
+    std::cout << *it3 << std::endl;
+
+    std::vector<int> vec;
+    vec.push_back(0);
+    vec.push_back(0);
+    vec.push_back(0);
+    vec.push_back(0);
+    vec.push_back(1);
+    auto find_it = Find_not(vec.begin(), vec.end(), 0);
+    std::cout << *find_it << std::endl;
+    std::cout << is_Sorted(vec.begin(), vec.end(), sorted<int>) << std::endl;
+    std::cout << is_Partioned(vec.begin(), vec.end(), zero<int>) << std::endl;
+    Point point[15];
+    for (int i = 0; i < 15; i++)
+    {
+        point[i] = Point(i, i + 1);
+    }
+    std::cout << All_of(point, point + 15, greater<Point>) << std::endl;
+    Point points[4];
+    points[0] = Point(4, 5);
+    points[3] = Point(4, 5);
+    points[1] = Point(2, 3);
+    points[2] = Point(2, 3);
+    std::cout << is_Palindrome(point, point + 15, func<Point>) << std::endl;
+    std::cout << is_Palindrome(points, points + 4, func<Point>) << std::endl;
+
+
     return 0;
 }
