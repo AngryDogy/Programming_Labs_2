@@ -3,7 +3,7 @@
 #define LAB3_ALGORITHMS_H
 
 template<class iterator, class predicate>
-bool all_of(iterator first, iterator last, predicate pred)
+bool All_of(iterator first, iterator last, predicate pred)
 {
     while (first != last)
     {
@@ -15,7 +15,7 @@ bool all_of(iterator first, iterator last, predicate pred)
 }
 
 template<class iterator, class predicate>
-bool any_of(iterator first, iterator last, predicate pred)
+bool Any_of(iterator first, iterator last, predicate pred)
 {
     while (first != last)
     {
@@ -27,7 +27,7 @@ bool any_of(iterator first, iterator last, predicate pred)
 }
 
 template<class iterator, class predicate>
-bool none_of(iterator first, iterator last, predicate pred)
+bool None_of(iterator first, iterator last, predicate pred)
 {
     while (first != last)
     {
@@ -39,7 +39,7 @@ bool none_of(iterator first, iterator last, predicate pred)
 }
 
 template<class iterator, class predicate>
-bool one_of(iterator first, iterator last, predicate pred)
+bool One_of(iterator first, iterator last, predicate pred)
 {
     int k = 0;
     while (first != last)
@@ -56,14 +56,14 @@ bool one_of(iterator first, iterator last, predicate pred)
 }
 
 template<class iterator, class sort_cmp>
-bool is_sorted(iterator first, iterator last, sort_cmp cmp)
+bool is_Sorted(iterator first, iterator last, sort_cmp cmp)
 {
     if (first == last)
         return true;
     iterator next = first;
     while (++next != last)
     {
-        if (!cmp(next, first))
+        if (!cmp(*first, *next))
         {
             return false;
         }
@@ -73,7 +73,7 @@ bool is_sorted(iterator first, iterator last, sort_cmp cmp)
 }
 
 template<class iterator, class predicate>
-bool is_partioned(iterator first, iterator last, predicate pred)
+bool is_Partioned(iterator first, iterator last, predicate pred)
 {
     while (first != last && pred(*first))
     {
@@ -89,7 +89,7 @@ bool is_partioned(iterator first, iterator last, predicate pred)
 }
 
 template<class iterator, typename T>
-iterator find_not(iterator first, iterator last, T value)
+iterator Find_not(iterator first, iterator last, T value)
 {
     while (first != last)
     {
@@ -101,7 +101,7 @@ iterator find_not(iterator first, iterator last, T value)
 }
 
 template<class iterator, typename T>
-iterator find_backward(iterator first, iterator last, T value)
+iterator Find_backward(iterator first, iterator last, T value)
 {
     iterator next = last;
     --next;
@@ -117,11 +117,11 @@ iterator find_backward(iterator first, iterator last, T value)
 }
 
 template<class iterator, class predicate>
-bool is_palindrome(iterator first, iterator last, predicate pred)
+bool is_Palindrome(iterator first, iterator last, predicate pred)
 {
     iterator next = last;
     --next;
-    while (next != first)
+    while (next != first && next > first)
     {
         if (!pred(*first, *next))
             return false;
