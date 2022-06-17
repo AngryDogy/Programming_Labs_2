@@ -25,4 +25,3 @@ do
     >> $output
 done
 echo "$(cat result.md)" >> $output
-pdfunite title.pdf report.pdf
